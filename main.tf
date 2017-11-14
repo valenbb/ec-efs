@@ -46,7 +46,7 @@ resource "aws_security_group" "efs-mount" {
     from_port   = 2049
     to_port     = 2049
     protocol    = "tcp"
-    security_group_id = ["${aws_security_group.efs-client.id}"]
+    security_groups = ["${aws_security_group.efs-client.id}"]
   }
 
   egress {
@@ -101,7 +101,7 @@ resource "aws_instance" "efs-ec2" {
   
   connection {
     user        = "ec2-user"
-    key_file    = "${file(var.ssh_key_filename)}"
+    private_key    = "${file(var.ssh_key_filename)}"
     agent       = false
     timeout     = "60s"
   }
