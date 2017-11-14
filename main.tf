@@ -1,5 +1,6 @@
 provider "aws" {
   region = "${var.aws_region}"
+  version = "~> 1.2"
 }
 
 resource "aws_security_group" "efs-client" {
