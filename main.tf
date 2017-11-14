@@ -75,7 +75,7 @@ resource "aws_efs_file_system" "efs-master" {
 }
 
 resource "aws_efs_mount_target" "efs-mount-target" {
-  count = "${length(split(", ", lookup(var.az_id, var.aws_region)))}"
+  #count = "${length(split(", ", lookup(var.az_id, var.aws_region)))}"
   file_system_id = "${aws_efs_file_system.efs-master.id}"
   subnet_id = "${var.subnet_id}"
   security_groups = ["${aws_security_group.efs-mount.*.id}"]
